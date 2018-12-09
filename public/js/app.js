@@ -47752,7 +47752,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["user", "conversation"],
@@ -47772,9 +47771,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       axios.post("/conversations/" + this.conversation + "/users").then(function (response) {
         location.reload();
       });
-    },
-    sendTypingEvent: function sendTypingEvent() {
-      Echo.join("chat").whisper("typing", this.user);
     },
     sendMessage: function sendMessage() {
       var _this = this;
@@ -47818,18 +47814,15 @@ var render = function() {
             },
             domProps: { value: _vm.newMessage },
             on: {
-              keyup: [
-                function($event) {
-                  if (
-                    !("button" in $event) &&
-                    _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-                  ) {
-                    return null
-                  }
-                  return _vm.sendMessage($event)
-                },
-                _vm.sendTypingEvent
-              ],
+              keyup: function($event) {
+                if (
+                  !("button" in $event) &&
+                  _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                ) {
+                  return null
+                }
+                return _vm.sendMessage($event)
+              },
               input: function($event) {
                 if ($event.target.composing) {
                   return
@@ -47960,6 +47953,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       axios.get("/conversations/" + this.conversation + "/messages").then(function (response) {
         _this.messages = response.data;
       });
+    },
+    deleteMessages: function deleteMessages() {
+      alert(this.conversation);
     }
   },
 

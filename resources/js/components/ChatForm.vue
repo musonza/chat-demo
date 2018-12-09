@@ -9,7 +9,6 @@
         placeholder="Type your message here..."
         v-model="newMessage"
         @keyup.enter="sendMessage"
-        @keyup="sendTypingEvent"
       >
       &nbsp;&nbsp;
       <span class="input-group-btn">
@@ -41,10 +40,6 @@ export default {
       axios.post(`/conversations/${this.conversation}/users`).then(response => {
         location.reload();
       });
-    },
-
-    sendTypingEvent() {
-      Echo.join("chat").whisper("typing", this.user);
     },
 
     sendMessage() {

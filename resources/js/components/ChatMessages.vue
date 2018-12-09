@@ -26,6 +26,10 @@ export default {
         .then(response => {
           this.messages = response.data;
         });
+    },
+
+    deleteMessages() {
+      alert(this.conversation);
     }
   },
 
