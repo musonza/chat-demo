@@ -20,7 +20,6 @@ $conversationId = Request::query('conversation_id');
                           @if($conversationId)
                           <div class="card-header">
                             Messages
-                            <button class="btn btn-danger btn-sm float-right" @click="deleteMessages()">Delete Message</button>
                           </div>
                           <div class="card-body">
                               <chat-messages :conversation="{{ $conversationId }}"></chat-messages>

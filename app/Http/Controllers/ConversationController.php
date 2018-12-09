@@ -49,6 +49,12 @@ class ConversationController extends Controller
         return response($messages);
     }
 
+    public function deleteMessages(Conversation $conversation)
+    {
+        Chat::conversation($conversation)->for(auth()->user())->clear();
+        return response('');
+    }
+
     public function sendMessage(Request $request, Conversation $conversation)
     {
         $message = Chat::message($request->message)

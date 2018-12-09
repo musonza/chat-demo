@@ -25,5 +25,6 @@ Route::post('conversations/{conversation}/users', 'ConversationController@join')
 
 Route::get('conversations/{conversation}/messages', 'ConversationController@getMessages');
 Route::post('conversations/{conversation}/messages', 'ConversationController@sendMessage');
+Route::delete('conversations/{conversation}/messages', 'ConversationController@deleteMessages');
 
 Route::get('/home', 'HomeController@index')->name('home');

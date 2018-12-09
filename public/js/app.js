@@ -47936,6 +47936,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["conversation"],
@@ -47955,7 +47960,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       });
     },
     deleteMessages: function deleteMessages() {
-      alert(this.conversation);
+      var _this2 = this;
+
+      axios.delete("/conversations/" + this.conversation + "/messages").then(function (response) {
+        _this2.messages = response.data;
+      });
     }
   },
 
@@ -47972,23 +47981,42 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "ul",
-    { staticClass: "chat" },
-    _vm._l(_vm.messages.data, function(message, index) {
-      return _c("li", { key: index, staticClass: "left clearfix" }, [
-        _c("div", { staticClass: "chat-body clearfix" }, [
-          _c("div", { staticClass: "header" }, [
-            _c("strong", { staticClass: "primary-font" }, [
-              _vm._v(_vm._s(message.sender.name))
-            ])
-          ]),
-          _vm._v(" "),
-          _c("p", [_vm._v(_vm._s(message.body))])
+  return _c("div", [
+    _c(
+      "button",
+      {
+        staticClass: "btn btn-danger btn-sm float-right",
+        on: {
+          click: function($event) {
+            _vm.deleteMessages()
+          }
+        }
+      },
+      [_vm._v("Delete Messages")]
+    ),
+    _vm._v(" "),
+    _c("br"),
+    _vm._v(" "),
+    _c("br"),
+    _vm._v(" "),
+    _c(
+      "ul",
+      { staticClass: "chat" },
+      _vm._l(_vm.messages.data, function(message, index) {
+        return _c("li", { key: index, staticClass: "left clearfix" }, [
+          _c("div", { staticClass: "chat-body clearfix" }, [
+            _c("div", { staticClass: "header" }, [
+              _c("strong", { staticClass: "primary-font" }, [
+                _vm._v(_vm._s(message.sender.name))
+              ])
+            ]),
+            _vm._v(" "),
+            _c("p", [_vm._v(_vm._s(message.body))])
+          ])
         ])
-      ])
-    })
-  )
+      })
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
