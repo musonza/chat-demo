@@ -12,7 +12,12 @@
             <a href="#" @click="showConversation(convo.id)">
               <strong class="primary-font">Conversation {{ convo.id }}</strong>
             </a>
-            <a href="#" class="text-danger" @click="leaveConversation(convo.id)">
+            <a
+              href="#"
+              class="text-danger"
+              title="leave conversation"
+              @click="leaveConversation(convo.id)"
+            >
               <strong>x</strong>
             </a>
           </div>

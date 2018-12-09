@@ -47573,6 +47573,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -47670,7 +47675,7 @@ var render = function() {
                 "a",
                 {
                   staticClass: "text-danger",
-                  attrs: { href: "#" },
+                  attrs: { href: "#", title: "leave conversation" },
                   on: {
                     click: function($event) {
                       _vm.leaveConversation(convo.id)
