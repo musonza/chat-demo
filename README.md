@@ -1,5 +1,7 @@
 # chat-demo
 
+<p align="left"><img src="chat-screen.png" alt="chat" width=""></p>
+
 This is a simple demo application for https://github.com/musonza/chat/
 
 1. Clone this repo
