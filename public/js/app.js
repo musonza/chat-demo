@@ -47578,6 +47578,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -47605,8 +47614,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     showConversation: function showConversation(id) {
       window.location.href = "home?conversation_id=" + id;
     },
+    isParticipant: function isParticipant(id) {
+      return window.conversations.indexOf(id) !== -1;
+    },
     leaveConversation: function leaveConversation(id) {
       axios.delete("/conversations/" + id + "/users").then(function (response) {
+        window.location.href = "home?conversation_id=" + id;
+      });
+    },
+    joinConversation: function joinConversation(id) {
+      axios.post("/conversations/" + id + "/users").then(function (response) {
         window.location.href = "home?conversation_id=" + id;
       });
     }
@@ -47671,19 +47688,33 @@ var render = function() {
                 ]
               ),
               _vm._v(" |\n            "),
-              _c(
-                "a",
-                {
-                  staticClass: "text-danger",
-                  attrs: { href: "#", title: "leave conversation" },
-                  on: {
-                    click: function($event) {
-                      _vm.leaveConversation(convo.id)
-                    }
-                  }
-                },
-                [_c("strong", [_vm._v("Leave")])]
-              )
+              !_vm.isParticipant(convo.id)
+                ? _c(
+                    "a",
+                    {
+                      staticClass: "text-success",
+                      attrs: { href: "#" },
+                      on: {
+                        click: function($event) {
+                          _vm.joinConversation(convo.id)
+                        }
+                      }
+                    },
+                    [_c("strong", [_vm._v("Join")])]
+                  )
+                : _c(
+                    "a",
+                    {
+                      staticClass: "text-danger",
+                      attrs: { href: "#", title: "leave conversation" },
+                      on: {
+                        click: function($event) {
+                          _vm.leaveConversation(convo.id)
+                        }
+                      }
+                    },
+                    [_c("strong", [_vm._v("Leave")])]
+                  )
             ]),
             _vm._v(" "),
             _c("p")

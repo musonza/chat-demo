@@ -13,6 +13,15 @@
               <strong class="primary-font">Conversation {{ convo.id }}</strong>
             </a> |
             <a
+              v-if="!isParticipant(convo.id)"
+              href="#"
+              class="text-success"
+              @click="joinConversation(convo.id)"
+            >
+              <strong>Join</strong>
+            </a>
+            <a
+              v-else
               href="#"
               class="text-danger"
               title="leave conversation"
@@ -54,8 +63,18 @@ export default {
       window.location.href = "home?conversation_id=" + id;
     },
 
+    isParticipant(id) {
+      return window.conversations.indexOf(id) !== -1;
+    },
+
     leaveConversation(id) {
       axios.delete(`/conversations/${id}/users`).then(response => {
+        window.location.href = "home?conversation_id=" + id;
+      });
+    },
+
+    joinConversation(id) {
+      axios.post(`/conversations/${id}/users`).then(response => {
         window.location.href = "home?conversation_id=" + id;
       });
     }
