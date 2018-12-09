@@ -11,14 +11,14 @@
           <div class="header">
             <a href="#" @click="showConversation(convo.id)">
               <strong class="primary-font">Conversation {{ convo.id }}</strong>
-            </a>
+            </a> |
             <a
               href="#"
               class="text-danger"
               title="leave conversation"
               @click="leaveConversation(convo.id)"
             >
-              <strong>x</strong>
+              <strong>Leave</strong>
             </a>
           </div>
           <p></p>

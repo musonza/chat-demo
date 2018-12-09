@@ -47670,7 +47670,7 @@ var render = function() {
                   ])
                 ]
               ),
-              _vm._v(" "),
+              _vm._v(" |\n            "),
               _c(
                 "a",
                 {
@@ -47682,7 +47682,7 @@ var render = function() {
                     }
                   }
                 },
-                [_c("strong", [_vm._v("x")])]
+                [_c("strong", [_vm._v("Leave")])]
               )
             ]),
             _vm._v(" "),
