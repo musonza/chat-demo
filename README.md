@@ -1,8 +1,8 @@
 # chat-demo
 
-<p align="left"><img src="chat-screen.png" alt="chat" width=""></p>
-
 This is a simple demo application for https://github.com/musonza/chat/
+
+<p align="left"><img src="chat-screen.png" alt="chat" width=""></p>
 
 1. Clone this repo
 2. `composer install`
