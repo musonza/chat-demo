@@ -21,21 +21,5 @@ const files = require.context('./', true, /\.vue$/i)
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))
 
 const app = new Vue({
-  el: '#app',
-
-  data: () => ({
-    conversations: [],
-    messages: [],
-    users: [],
-  }),
-
-  methods: {
-    addMessage(message) {
-      this.messages.push(message);
-      axios.post('/messages', message).then(response => {
-        console.log(response.data);
-      });
-    }
-  }
-
+  el: '#app'
 });
