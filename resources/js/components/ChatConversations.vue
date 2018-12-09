@@ -32,7 +32,7 @@ export default {
   methods: {
     createConversation() {
       axios.post("/conversations").then(response => {
-        this.conversation = response.data;
+        location.reload();
       });
     },
 

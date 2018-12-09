@@ -47583,17 +47583,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   methods: {
     createConversation: function createConversation() {
-      var _this = this;
-
       axios.post("/conversations").then(function (response) {
-        _this.conversation = response.data;
+        location.reload();
       });
     },
     fetchConversations: function fetchConversations() {
-      var _this2 = this;
+      var _this = this;
 
       axios.get("/conversations").then(function (response) {
-        _this2.conversations = response.data;
+        _this.conversations = response.data;
       });
     },
     showConversation: function showConversation(id) {
