@@ -47570,6 +47570,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -47596,6 +47599,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     showConversation: function showConversation(id) {
       window.location.href = "home?conversation_id=" + id;
+    },
+    leaveConversation: function leaveConversation(id) {
+      axios.delete("/conversations/" + id + "/users").then(function (response) {
+        window.location.href = "home?conversation_id=" + id;
+      });
     }
   },
 
@@ -47656,6 +47664,20 @@ var render = function() {
                     _vm._v("Conversation " + _vm._s(convo.id))
                   ])
                 ]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "text-danger",
+                  attrs: { href: "#" },
+                  on: {
+                    click: function($event) {
+                      _vm.leaveConversation(convo.id)
+                    }
+                  }
+                },
+                [_c("strong", [_vm._v("x")])]
               )
             ]),
             _vm._v(" "),

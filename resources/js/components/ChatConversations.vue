@@ -12,6 +12,9 @@
             <a href="#" @click="showConversation(convo.id)">
               <strong class="primary-font">Conversation {{ convo.id }}</strong>
             </a>
+            <a href="#" class="text-danger" @click="leaveConversation(convo.id)">
+              <strong>x</strong>
+            </a>
           </div>
           <p></p>
         </div>
@@ -44,6 +47,12 @@ export default {
 
     showConversation(id) {
       window.location.href = "home?conversation_id=" + id;
+    },
+
+    leaveConversation(id) {
+      axios.delete(`/conversations/${id}/users`).then(response => {
+        window.location.href = "home?conversation_id=" + id;
+      });
     }
   },
 

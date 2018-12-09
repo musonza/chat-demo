@@ -42,6 +42,12 @@ class ConversationController extends Controller
         return response('');
     }
 
+    public function leaveConversation(Request $request, Conversation $conversation)
+    {
+        Chat::conversation($conversation)->removeParticipants(auth()->user());
+        return response('');
+    }
+
     public function getMessages(Request $request, Conversation $conversation)
     {
         $messages = Chat::conversation($conversation)->for(auth()->user())->getMessages();
