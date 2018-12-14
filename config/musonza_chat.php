@@ -7,7 +7,9 @@ return [
      * This will allow you to broadcast an event when a message is sent
      * Example:
      * Channel: private-mc-chat-conversation.2,
-     * Event: Musonza\Chat\Messages\MessageWasSent
+     * Event: Musonza\Chat\Eventing\MessageWasSent
      */
-    'broadcasts'            => false,
+    'broadcasts'            => true,
+
+    'sent_message_event' => 'Musonza\Chat\Eventing\MessageWasSent',
 ];

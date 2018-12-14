@@ -39,11 +39,25 @@ export default {
         .then(response => {
           this.messages = response.data;
         });
+    },
+
+    enablePusher() {
+      let pusher = new Pusher(process.env.MIX_PUSHER_APP_KEY, {
+        cluster: process.env.MIX_PUSHER_APP_CLUSTER
+      });
+
+      let channel = pusher.subscribe(
+        `mc-chat-conversation.${this.conversation}`
+      );
+      channel.bind("Musonza\\Chat\\Eventing\\MessageWasSent", data => {
+        this.messages.data.push(data.message);
+      });
     }
   },
 
   created() {
     this.fetchMessages();
+    //this.enablePusher();
   }
 };
 </script>

@@ -29,3 +29,7 @@ Route::post('conversations/{conversation}/messages', 'ConversationController@sen
 Route::delete('conversations/{conversation}/messages', 'ConversationController@deleteMessages');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::post('pusher/auth', function() {
+  return auth()->user();
+});

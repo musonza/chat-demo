@@ -49,7 +49,7 @@ export default {
         })
         .then(response => {
           this.newMessage = "";
-          location.reload();
+          location.reload(); // comment this out if you are broadcasting
         });
     }
   }
