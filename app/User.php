@@ -5,10 +5,12 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Musonza\Chat\Traits\Messageable;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use Messageable;
 
     /**
      * The attributes that are mass assignable.

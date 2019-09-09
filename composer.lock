@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "5f4c22e79bd096096b9218ae1640276a",
+    "content-hash": "52446d54d1e6b12714b3d65f4524202b",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1182,21 +1182,21 @@
         },
         {
             "name": "musonza/chat",
-            "version": "v3.1.0",
+            "version": "dev-multiple-model-recipients",
             "source": {
                 "type": "git",
                 "url": "https://github.com/musonza/chat.git",
-                "reference": "6e3e175b7a7c75579da8ded7c855516e30c1d57f"
+                "reference": "e424154e1161fbb9257f04cb451f50fcbebbb656"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/musonza/chat/zipball/6e3e175b7a7c75579da8ded7c855516e30c1d57f",
-                "reference": "6e3e175b7a7c75579da8ded7c855516e30c1d57f",
+                "url": "https://api.github.com/repos/musonza/chat/zipball/e424154e1161fbb9257f04cb451f50fcbebbb656",
+                "reference": "e424154e1161fbb9257f04cb451f50fcbebbb656",
                 "shasum": ""
             },
             "require": {
-                "laravel/framework": "~5.4.0|~5.5.0|~5.6.0|~5.7.0",
-                "php": ">=7.0"
+                "laravel/framework": "~5.4.0|~5.5.0|~5.6.0|~5.7.0|~5.8.0|~6.0.0",
+                "php": ">=7.1"
             },
             "require-dev": {
                 "mockery/mockery": "^1.0.0",
@@ -1209,7 +1209,10 @@
                 "laravel": {
                     "providers": [
                         "Musonza\\Chat\\ChatServiceProvider"
-                    ]
+                    ],
+                    "aliases": {
+                        "Chat": "Musonza\\Chat\\Facades\\ChatFacade"
+                    }
                 }
             },
             "autoload": {
@@ -1235,7 +1238,7 @@
                 "laravel",
                 "messaging"
             ],
-            "time": "2018-12-14T03:45:14+00:00"
+            "time": "2019-09-09T23:24:02+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -5940,7 +5943,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "musonza/chat": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

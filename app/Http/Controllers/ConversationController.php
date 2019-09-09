@@ -23,7 +23,7 @@ class ConversationController extends Controller
 
     public function store()
     {
-        $participants = [auth()->user()->id];
+        $participants = [auth()->user()];
         $conversation = Chat::createConversation($participants);
 
         return response($conversation);
@@ -38,13 +38,13 @@ class ConversationController extends Controller
 
     public function join(Request $request, Conversation $conversation)
     {
-        Chat::conversation($conversation)->addParticipants(auth()->user());
+        Chat::conversation($conversation)->addParticipants([auth()->user()]);
         return response('');
     }
 
     public function leaveConversation(Request $request, Conversation $conversation)
     {
-        Chat::conversation($conversation)->removeParticipants(auth()->user());
+        Chat::conversation($conversation)->removeParticipants([auth()->user()]);
         return response('');
     }
 
