@@ -37,7 +37,7 @@ export default {
     },
 
     joinConversation() {
-      axios.post(`/conversations/${this.conversation}/users`).then(response => {
+      axios.post(`/conversations/${this.conversation}/participants`).then(response => {
         location.reload();
       });
     },

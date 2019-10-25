@@ -68,13 +68,13 @@ export default {
     },
 
     leaveConversation(id) {
-      axios.delete(`/conversations/${id}/users`).then(response => {
+      axios.delete(`/conversations/${id}/participants`).then(response => {
         window.location.href = "home?conversation_id=" + id;
       });
     },
 
     joinConversation(id) {
-      axios.post(`/conversations/${id}/users`).then(response => {
+      axios.post(`/conversations/${id}/participants`).then(response => {
         window.location.href = "home?conversation_id=" + id;
       });
     }

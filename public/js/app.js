@@ -14028,7 +14028,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(13);
-module.exports = __webpack_require__(55);
+module.exports = __webpack_require__(54);
 
 
 /***/ }),
@@ -14044,7 +14044,7 @@ module.exports = __webpack_require__(55);
 
 __webpack_require__(14);
 
-window.Vue = __webpack_require__(39);
+window.Vue = __webpack_require__(38);
 
 /**
  * The following block of code may be used to automatically register your
@@ -14054,7 +14054,7 @@ window.Vue = __webpack_require__(39);
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-var files = __webpack_require__(42);
+var files = __webpack_require__(41);
 files.keys().map(function (key) {
   return Vue.component(key.split('/').pop().split('.')[0], files(key));
 });
@@ -14065,9 +14065,8 @@ var app = new Vue({
 
 /***/ }),
 /* 14 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
 
 window._ = __webpack_require__(15);
 
@@ -14118,7 +14117,7 @@ var users = [];
 
 // import Echo from 'laravel-echo'
 
-window.Pusher = __webpack_require__(38);
+window.Pusher = __webpack_require__(37);
 
 // window.Echo = new Echo({
 //   broadcaster: 'pusher',
@@ -36112,8 +36111,7 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 37 */,
-/* 38 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -44959,7 +44957,7 @@ return /******/ (function(modules) { // webpackBootstrap
 ;
 
 /***/ }),
-/* 39 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56057,10 +56055,10 @@ Vue.compile = compileToFunctions;
 
 module.exports = Vue;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(40).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(39).setImmediate))
 
 /***/ }),
-/* 40 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !== "undefined" && global) ||
@@ -56116,7 +56114,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(41);
+__webpack_require__(40);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -56130,7 +56128,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 41 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -56323,14 +56321,14 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(7)))
 
 /***/ }),
-/* 42 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./components/ChatConversations.vue": 43,
-	"./components/ChatForm.vue": 46,
-	"./components/ChatMessages.vue": 49,
-	"./components/ConversationParticipants.vue": 52
+	"./components/ChatConversations.vue": 42,
+	"./components/ChatForm.vue": 45,
+	"./components/ChatMessages.vue": 48,
+	"./components/ConversationParticipants.vue": 51
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -56346,18 +56344,18 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 42;
+webpackContext.id = 41;
 
 /***/ }),
-/* 43 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(44)
+var __vue_script__ = __webpack_require__(43)
 /* template */
-var __vue_template__ = __webpack_require__(45)
+var __vue_template__ = __webpack_require__(44)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -56396,7 +56394,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 44 */
+/* 43 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -56471,12 +56469,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       return window.conversations.indexOf(id) !== -1;
     },
     leaveConversation: function leaveConversation(id) {
-      axios.delete("/conversations/" + id + "/users").then(function (response) {
+      axios.delete("/conversations/" + id + "/participants").then(function (response) {
         window.location.href = "home?conversation_id=" + id;
       });
     },
     joinConversation: function joinConversation(id) {
-      axios.post("/conversations/" + id + "/users").then(function (response) {
+      axios.post("/conversations/" + id + "/participants").then(function (response) {
         window.location.href = "home?conversation_id=" + id;
       });
     }
@@ -56488,7 +56486,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 45 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -56588,15 +56586,15 @@ if (false) {
 }
 
 /***/ }),
-/* 46 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(47)
+var __vue_script__ = __webpack_require__(46)
 /* template */
-var __vue_template__ = __webpack_require__(48)
+var __vue_template__ = __webpack_require__(47)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -56635,7 +56633,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 47 */
+/* 46 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -56679,7 +56677,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       return window.conversations.indexOf(this.conversation) !== -1;
     },
     joinConversation: function joinConversation() {
-      axios.post("/conversations/" + this.conversation + "/users").then(function (response) {
+      axios.post("/conversations/" + this.conversation + "/participants").then(function (response) {
         location.reload();
       });
     },
@@ -56697,7 +56695,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 48 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -56782,15 +56780,15 @@ if (false) {
 }
 
 /***/ }),
-/* 49 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(50)
+var __vue_script__ = __webpack_require__(49)
 /* template */
-var __vue_template__ = __webpack_require__(51)
+var __vue_template__ = __webpack_require__(50)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -56829,7 +56827,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 50 */
+/* 49 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -56880,8 +56878,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     enablePusher: function enablePusher() {
       var _this3 = this;
 
-      var pusher = new Pusher("132dbfd22d92f23534cc", {
-        cluster: "us2"
+      var pusher = new Pusher("", {
+        cluster: "mt1"
       });
 
       var channel = pusher.subscribe("mc-chat-conversation." + this.conversation);
@@ -56898,7 +56896,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 51 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -56953,15 +56951,15 @@ if (false) {
 }
 
 /***/ }),
-/* 52 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(53)
+var __vue_script__ = __webpack_require__(52)
 /* template */
-var __vue_template__ = __webpack_require__(54)
+var __vue_template__ = __webpack_require__(53)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -57000,11 +56998,12 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 53 */
+/* 52 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //
@@ -57031,7 +57030,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     getParticipants: function getParticipants(conversationId) {
       var _this = this;
 
-      axios.get("/conversations/" + conversationId + "/users").then(function (response) {
+      axios.get("/conversations/" + conversationId + "/participants").then(function (response) {
         _this.participants = response.data;
       });
     }
@@ -57043,7 +57042,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 54 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -57053,12 +57052,16 @@ var render = function() {
   return _c(
     "ul",
     { staticClass: "chat" },
-    _vm._l(_vm.participants, function(user, index) {
+    _vm._l(_vm.participants, function(participant, index) {
       return _c("li", { key: index, staticClass: "left clearfix" }, [
         _c("div", { staticClass: "chat-body clearfix" }, [
           _c("div", { staticClass: "header" }, [
             _c("strong", { staticClass: "primary-font" }, [
-              _vm._v(_vm._s(user.name))
+              _vm._v("ID: " + _vm._s(participant.messageable_id))
+            ]),
+            _vm._v(" "),
+            _c("strong", { staticClass: "primary-font" }, [
+              _vm._v("Model: " + _vm._s(participant.messageable_type))
             ])
           ])
         ])
@@ -57077,7 +57080,7 @@ if (false) {
 }
 
 /***/ }),
-/* 55 */
+/* 54 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
