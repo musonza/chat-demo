@@ -3,7 +3,8 @@
     <li class="left clearfix" v-for="(user, index) in participants" :key="index">
       <div class="chat-body clearfix">
         <div class="header">
-          <strong class="primary-font">{{ user.name }}</strong>
+          <strong class="primary-font">ID: {{ user.messageable_id }}</strong>
+          <strong class="primary-font">Model: {{ user.messageable_type }}</strong>
         </div>
       </div>
     </li>
