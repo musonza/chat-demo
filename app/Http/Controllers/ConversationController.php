@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\MessageSent;
-use App\Message;
-use Illuminate\Http\Request;
 use Chat;
+use Illuminate\Http\Request;
 use Musonza\Chat\Models\Conversation;
 
 class ConversationController extends Controller
@@ -36,19 +34,19 @@ class ConversationController extends Controller
         return response($participants);
     }
 
-    public function join(Request $request, Conversation $conversation)
+    public function join(Conversation $conversation)
     {
         Chat::conversation($conversation)->addParticipants([auth()->user()]);
         return response('');
     }
 
-    public function leaveConversation(Request $request, Conversation $conversation)
+    public function leaveConversation(Conversation $conversation)
     {
         Chat::conversation($conversation)->removeParticipants([auth()->user()]);
         return response('');
     }
 
-    public function getMessages(Request $request, Conversation $conversation)
+    public function getMessages(Conversation $conversation)
     {
         $messages = Chat::conversation($conversation)->for(auth()->user())->getMessages();
 
