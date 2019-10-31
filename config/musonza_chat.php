@@ -38,7 +38,6 @@ return [
      * Routes configuration
      */
     'routes' => [
-        'enabled'     => false,
         'path_prefix' => 'chat',
         'middleware'  => ['api'],
     ],

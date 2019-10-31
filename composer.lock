@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6578ffac5f97b05642b150d16798991d",
+    "content-hash": "9a9b34eca0fe6bafc4216d32a3cffd41",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -844,11 +844,16 @@
         {
             "name": "musonza/chat",
             "version": "dev-multiple-model-recipients",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/musonza/chat.git",
+                "reference": "8ebb22adf77b9faa2a41dc81b69b6eb45846e2fc"
+            },
             "dist": {
-                "type": "path",
-                "url": "/Users/tinashe/Projects/tashtin/github-source/chat",
-                "reference": "f2df99622cee6816f0015334eaacf36af2e7b017",
-                "shasum": null
+                "type": "zip",
+                "url": "https://api.github.com/repos/musonza/chat/zipball/8ebb22adf77b9faa2a41dc81b69b6eb45846e2fc",
+                "reference": "8ebb22adf77b9faa2a41dc81b69b6eb45846e2fc",
+                "shasum": ""
             },
             "require": {
                 "laravel/framework": "^6.0",
@@ -876,19 +881,7 @@
                     "Musonza\\Chat\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Musonza\\Chat\\Tests\\": "tests"
-                },
-                "files": [
-                    "tests/Helpers/Models.php"
-                ]
-            },
-            "scripts": {
-                "test": [
-                    "phpunit"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -905,7 +898,8 @@
                 "conversation",
                 "laravel",
                 "messaging"
-            ]
+            ],
+            "time": "2019-10-31T22:50:12+00:00"
         },
         {
             "name": "nesbot/carbon",

@@ -56670,35 +56670,39 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["user", "conversation"],
+    props: ["user", "conversation"],
 
-  data: function data() {
-    return {
-      newMessage: ""
-    };
-  },
-
-
-  methods: {
-    isParticipant: function isParticipant() {
-      return window.conversations.indexOf(this.conversation) !== -1;
+    data: function data() {
+        return {
+            newMessage: ""
+        };
     },
-    joinConversation: function joinConversation() {
-      axios.post("/conversations/" + this.conversation + "/participants").then(function (response) {
-        location.reload();
-      });
-    },
-    sendMessage: function sendMessage() {
-      var _this = this;
 
-      axios.post("/conversations/" + this.conversation + "/messages", {
-        message: this.newMessage
-      }).then(function (response) {
-        _this.newMessage = "";
-        location.reload(); // comment this out if you are broadcasting
-      });
+
+    methods: {
+        isParticipant: function isParticipant() {
+            return window.conversations.indexOf(this.conversation) !== -1;
+        },
+        joinConversation: function joinConversation() {
+            axios.post("/chat/conversations/" + this.conversation + "/participants").then(function (response) {
+                location.reload();
+            });
+        },
+        sendMessage: function sendMessage() {
+            var _this = this;
+
+            axios.post("/chat/conversations/" + this.conversation + "/messages", {
+                message: {
+                    body: this.newMessage
+                },
+                participant_id: window.participant.id,
+                participant_type: window.participant.type
+            }).then(function () {
+                _this.newMessage = "";
+                location.reload(); // comment this out if you are broadcasting
+            });
+        }
     }
-  }
 });
 
 /***/ }),
@@ -56747,7 +56751,7 @@ var render = function() {
               }
             }
           }),
-          _vm._v("\n        \n      "),
+          _vm._v("\n              \n            "),
           _c("span", { staticClass: "input-group-btn" }, [
             _c(
               "button",
