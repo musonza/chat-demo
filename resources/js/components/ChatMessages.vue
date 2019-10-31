@@ -27,7 +27,7 @@ export default {
   methods: {
     fetchMessages() {
       axios
-        .get(`/conversations/${this.conversation}/messages`)
+        .get(`/chat/conversations/${this.conversation}/messages?participant_id=${window.participant.id}&participant_type=${window.participant.type}`)
         .then(response => {
           this.messages = response.data;
         });
@@ -35,7 +35,7 @@ export default {
 
     deleteMessages() {
       axios
-        .delete(`/conversations/${this.conversation}/messages`)
+        .delete(`/chat/conversations/${this.conversation}/messages?participant_id=${window.participant.id}&participant_type=${window.participant.type}`)
         .then(response => {
           this.messages = response.data;
         });

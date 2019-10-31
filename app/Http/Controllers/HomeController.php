@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Chat;
+use Illuminate\Http\Response;
+use Illuminate\Support\Arr;
 
 class HomeController extends Controller
 {
@@ -20,17 +22,25 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
-        $conversations = Chat::conversation(Chat::conversations()->conversation)
-          ->for(auth()->user())
+        $conversations = Chat::conversations(Chat::conversations()->conversation)
+          ->setParticipant(auth()->user())
           ->get()
           ->toArray()['data'];
 
-        $conversations = array_pluck($conversations, 'id');
+        $conversations = Arr::pluck($conversations, 'conversation_id');
 
-        return view('home', compact('conversations'));
+        $data = [
+            'conversations' => array_map('intval', $conversations),
+            'participant' => [
+                'id' => auth()->user()->id,
+                'type' => get_class(auth()->user())
+            ]
+        ];
+
+        return view('home', $data);
     }
 }

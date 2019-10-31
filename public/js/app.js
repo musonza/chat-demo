@@ -56440,49 +56440,56 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      conversation: null,
-      conversations: []
-    };
-  },
+    data: function data() {
+        return {
+            conversation: null,
+            conversations: []
+        };
+    },
 
-  props: ["messages"],
+    props: ["messages"],
 
-  methods: {
-    createConversation: function createConversation() {
-      axios.post("/conversations").then(function (response) {
-        location.reload();
-      });
-    },
-    fetchConversations: function fetchConversations() {
-      var _this = this;
+    methods: {
+        createConversation: function createConversation() {
+            axios.post("/conversations").then(function (response) {
+                location.reload();
+            });
+        },
+        fetchConversations: function fetchConversations() {
+            var _this = this;
 
-      axios.get("/conversations").then(function (response) {
-        _this.conversations = response.data;
-      });
+            axios.get("/chat/conversations").then(function (response) {
+                _this.conversations = response.data;
+            });
+        },
+        showConversation: function showConversation(id) {
+            window.location.href = "home?conversation_id=" + id;
+        },
+        isParticipant: function isParticipant(id) {
+            return window.conversations.indexOf(id) !== -1;
+        },
+        leaveConversation: function leaveConversation(id) {
+            axios.delete("/conversations/" + id + "/participants").then(function (response) {
+                window.location.href = "home?conversation_id=" + id;
+            });
+        },
+        joinConversation: function joinConversation(id) {
+            var payload = {
+                'participants': [{
+                    'id': window.participant.id,
+                    'type': window.participant.type
+                }]
+            };
+
+            axios.post("/chat/conversations/" + id + "/participants", payload).then(function (response) {
+                window.location.href = "home?conversation_id=" + id;
+            });
+        }
     },
-    showConversation: function showConversation(id) {
-      window.location.href = "home?conversation_id=" + id;
-    },
-    isParticipant: function isParticipant(id) {
-      return window.conversations.indexOf(id) !== -1;
-    },
-    leaveConversation: function leaveConversation(id) {
-      axios.delete("/conversations/" + id + "/participants").then(function (response) {
-        window.location.href = "home?conversation_id=" + id;
-      });
-    },
-    joinConversation: function joinConversation(id) {
-      axios.post("/conversations/" + id + "/participants").then(function (response) {
-        window.location.href = "home?conversation_id=" + id;
-      });
+
+    created: function created() {
+        this.fetchConversations();
     }
-  },
-
-  created: function created() {
-    this.fetchConversations();
-  }
 });
 
 /***/ }),
@@ -56538,7 +56545,7 @@ var render = function() {
                   ])
                 ]
               ),
-              _vm._v(" |\n            "),
+              _vm._v(" |\n                        "),
               !_vm.isParticipant(convo.id)
                 ? _c(
                     "a",
@@ -56864,14 +56871,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     fetchMessages: function fetchMessages() {
       var _this = this;
 
-      axios.get("/conversations/" + this.conversation + "/messages").then(function (response) {
+      axios.get("/chat/conversations/" + this.conversation + "/messages?participant_id=" + window.participant.id + "&participant_type=" + window.participant.type).then(function (response) {
         _this.messages = response.data;
       });
     },
     deleteMessages: function deleteMessages() {
       var _this2 = this;
 
-      axios.delete("/conversations/" + this.conversation + "/messages").then(function (response) {
+      axios.delete("/chat/conversations/" + this.conversation + "/messages?participant_id=" + window.participant.id + "&participant_type=" + window.participant.type).then(function (response) {
         _this2.messages = response.data;
       });
     },
@@ -57018,27 +57025,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["conversation"],
+    props: ["conversation"],
 
-  data: function data() {
-    return {
-      participants: []
-    };
-  },
+    data: function data() {
+        return {
+            participants: []
+        };
+    },
 
-  methods: {
-    getParticipants: function getParticipants(conversationId) {
-      var _this = this;
+    methods: {
+        getParticipants: function getParticipants(conversationId) {
+            var _this = this;
 
-      axios.get("/conversations/" + conversationId + "/participants").then(function (response) {
-        _this.participants = response.data;
-      });
+            axios.get("/chat/conversations/" + conversationId + "/participants").then(function (response) {
+                _this.participants = response.data;
+            });
+        }
+    },
+
+    created: function created() {
+        this.getParticipants(this.conversation);
     }
-  },
-
-  created: function created() {
-    this.getParticipants(this.conversation);
-  }
 });
 
 /***/ }),
@@ -57057,11 +57064,12 @@ var render = function() {
         _c("div", { staticClass: "chat-body clearfix" }, [
           _c("div", { staticClass: "header" }, [
             _c("strong", { staticClass: "primary-font" }, [
-              _vm._v("ID: " + _vm._s(participant.messageable_id))
+              _vm._v(_vm._s(participant.name))
             ]),
+            _c("br"),
             _vm._v(" "),
-            _c("strong", { staticClass: "primary-font" }, [
-              _vm._v("Model: " + _vm._s(participant.messageable_type))
+            _c("span", [
+              _vm._v(_vm._s(participant.participation[0].messageable_type))
             ])
           ])
         ])

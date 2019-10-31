@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('conversations', 'ConversationController@index');
+//Route::get('conversations', 'ConversationController@index');
 Route::post('conversations', 'ConversationController@store');
 
 Route::get('conversations/{conversation}/participants', 'ConversationController@participants');
