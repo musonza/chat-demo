@@ -43,14 +43,13 @@
             },
 
             sendMessage() {
-                axios
-                    .post(`/chat/conversations/${this.conversation}/messages`, {
-                        message: {
-                            body: this.newMessage,
-                        },
-                        participant_id: window.participant.id,
-                        participant_type: window.participant.type,
-                    })
+                axios.post(`/chat/conversations/${this.conversation}/messages`, {
+                    message: {
+                        body: this.newMessage,
+                    },
+                    participant_id: window.participant.id,
+                    participant_type: window.participant.type,
+                })
                     .then(() => {
                         this.newMessage = "";
                         location.reload(); // comment this out if you are broadcasting

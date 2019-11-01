@@ -56459,7 +56459,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             axios.get("/chat/conversations").then(function (response) {
-                _this.conversations = response.data;
+                _this.conversations = response.data.data;
             });
         },
         showConversation: function showConversation(id) {

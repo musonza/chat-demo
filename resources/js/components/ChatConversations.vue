@@ -55,7 +55,7 @@
 
             fetchConversations() {
                 axios.get("/chat/conversations").then(response => {
-                    this.conversations = response.data;
+                    this.conversations = response.data.data;
                 });
             },
 

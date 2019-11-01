@@ -39,7 +39,7 @@ return [
      */
     'routes' => [
         'path_prefix' => 'chat',
-        'middleware'  => ['api'],
+        'middleware'  => ['web'],
     ],
 
     /*
@@ -52,4 +52,13 @@ return [
         'columns'  => ['*'],
         'pageName' => 'page',
     ],
+
+    /**
+     * Model Transformers
+     */
+    'transformers' => [
+        'conversation' => \App\Transformers\ConversationTransformer::class,
+        'message' => \App\Transformers\MessageTransformer::class,
+        'participant' =>  \App\Transformers\ParticipantTransformer::class,
+    ]
 ];
