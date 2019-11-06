@@ -19,7 +19,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script>
-      var conversations = {!! isset($conversations) ? json_encode($conversations) : '' !!}
+        var conversations = {!! isset($conversations) ? json_encode($conversations) : '' !!};
+        var participant = {!! isset($participant) ? json_encode($participant) : '' !!};
     </script>
 </head>
 <body>

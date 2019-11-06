@@ -10,9 +10,10 @@
   "require": {
     "php": "^7.1.3",
     "fideloper/proxy": "^4.0",
-    "laravel/framework": "^5.7",
+    "laravel/framework": "6.0",
     "laravel/tinker": "^1.0",
-    "musonza/chat": "^3.1"
+    "musonza/chat": "dev-multiple-model-recipients",
+    "spatie/laravel-fractal": "^5.6"
   },
   "require-dev": {
     "beyondcode/laravel-dump-server": "^1.0",
