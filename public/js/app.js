@@ -56889,8 +56889,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     enablePusher: function enablePusher() {
       var _this3 = this;
 
-      var pusher = new Pusher("", {
-        cluster: "mt1"
+      var pusher = new Pusher("132dbfd22d92f23534cc", {
+        cluster: "us2"
       });
 
       var channel = pusher.subscribe("mc-chat-conversation." + this.conversation);
