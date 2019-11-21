@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "88e203b23a961a46eb2114e0d185337b",
+    "content-hash": "641b15d7dc465b0ae947fe52815cb098",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -907,21 +907,22 @@
         },
         {
             "name": "musonza/chat",
-            "version": "dev-multiple-model-recipients",
+            "version": "4.0.4-beta",
             "source": {
                 "type": "git",
                 "url": "https://github.com/musonza/chat.git",
-                "reference": "d82a070f61383c61c0417fdd8598660272369293"
+                "reference": "f32cd7f02544f339896bf011c9942e3170a64777"
             },
             "dist": {
-                "type": "path",
-                "url": "https://api.github.com/repos/musonza/chat/zipball/d82a070f61383c61c0417fdd8598660272369293",
-                "reference": "d82a070f61383c61c0417fdd8598660272369293",
-                "shasum": null
+                "type": "zip",
+                "url": "https://api.github.com/repos/musonza/chat/zipball/f32cd7f02544f339896bf011c9942e3170a64777",
+                "reference": "f32cd7f02544f339896bf011c9942e3170a64777",
+                "shasum": ""
             },
             "require": {
                 "laravel/framework": "^6.0",
-                "php": "^7.2"
+                "php": "^7.2",
+                "spatie/laravel-fractal": "^5.6"
             },
             "require-dev": {
                 "mockery/mockery": "^1.0.0",
@@ -945,19 +946,7 @@
                     "Musonza\\Chat\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Musonza\\Chat\\Tests\\": "tests"
-                },
-                "files": [
-                    "tests/Helpers/Models.php"
-                ]
-            },
-            "scripts": {
-                "test": [
-                    "phpunit"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -974,7 +963,8 @@
                 "conversation",
                 "laravel",
                 "messaging"
-            ]
+            ],
+            "time": "2019-11-07T12:53:56+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -1200,6 +1190,88 @@
                 "random"
             ],
             "time": "2018-07-02T15:55:56+00:00"
+        },
+        {
+            "name": "paragonie/sodium_compat",
+            "version": "v1.12.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/paragonie/sodium_compat.git",
+                "reference": "063cae9b3a7323579063e7037720f5b52b56c178"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/paragonie/sodium_compat/zipball/063cae9b3a7323579063e7037720f5b52b56c178",
+                "reference": "063cae9b3a7323579063e7037720f5b52b56c178",
+                "shasum": ""
+            },
+            "require": {
+                "paragonie/random_compat": ">=1",
+                "php": "^5.2.4|^5.3|^5.4|^5.5|^5.6|^7|^8"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^3|^4|^5|^6|^7"
+            },
+            "suggest": {
+                "ext-libsodium": "PHP < 7.0: Better performance, password hashing (Argon2i), secure memory management (memzero), and better security.",
+                "ext-sodium": "PHP >= 7.0: Better performance, password hashing (Argon2i), secure memory management (memzero), and better security."
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "autoload.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "ISC"
+            ],
+            "authors": [
+                {
+                    "name": "Paragon Initiative Enterprises",
+                    "email": "security@paragonie.com"
+                },
+                {
+                    "name": "Frank Denis",
+                    "email": "jedisct1@pureftpd.org"
+                }
+            ],
+            "description": "Pure PHP implementation of libsodium; uses the PHP extension if it exists",
+            "keywords": [
+                "Authentication",
+                "BLAKE2b",
+                "ChaCha20",
+                "ChaCha20-Poly1305",
+                "Chapoly",
+                "Curve25519",
+                "Ed25519",
+                "EdDSA",
+                "Edwards-curve Digital Signature Algorithm",
+                "Elliptic Curve Diffie-Hellman",
+                "Poly1305",
+                "Pure-PHP cryptography",
+                "RFC 7748",
+                "RFC 8032",
+                "Salpoly",
+                "Salsa20",
+                "X25519",
+                "XChaCha20-Poly1305",
+                "XSalsa20-Poly1305",
+                "Xchacha20",
+                "Xsalsa20",
+                "aead",
+                "cryptography",
+                "ecdh",
+                "elliptic curve",
+                "elliptic curve cryptography",
+                "encryption",
+                "libsodium",
+                "php",
+                "public-key cryptography",
+                "secret-key cryptography",
+                "side-channel resistant"
+            ],
+            "time": "2019-11-07T17:07:24+00:00"
         },
         {
             "name": "phpoption/phpoption",
@@ -1468,6 +1540,60 @@
                 "shell"
             ],
             "time": "2018-10-13T15:16:03+00:00"
+        },
+        {
+            "name": "pusher/pusher-php-server",
+            "version": "v4.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pusher/pusher-http-php.git",
+                "reference": "f88698f332f3f398fa683f9a5b6b2409f1748f73"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pusher/pusher-http-php/zipball/f88698f332f3f398fa683f9a5b6b2409f1748f73",
+                "reference": "f88698f332f3f398fa683f9a5b6b2409f1748f73",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "paragonie/sodium_compat": "^1.6",
+                "php": ">=7.1 <7.4",
+                "psr/log": "^1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Pusher\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Library for interacting with the Pusher REST API",
+            "keywords": [
+                "events",
+                "messaging",
+                "php-pusher-server",
+                "publish",
+                "push",
+                "pusher",
+                "real time",
+                "real-time",
+                "realtime",
+                "rest",
+                "trigger"
+            ],
+            "time": "2019-10-28T11:51:09+00:00"
         },
         {
             "name": "ramsey/uuid",
@@ -4913,9 +5039,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "musonza/chat": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
