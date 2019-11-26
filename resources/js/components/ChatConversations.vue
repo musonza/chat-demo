@@ -48,7 +48,7 @@
 
         methods: {
             createConversation() {
-                axios.post("/conversations").then(response => {
+                axios.post("/chat/conversations").then(response => {
                     location.reload();
                 });
             },

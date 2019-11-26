@@ -10,5 +10,6 @@ This is a simple demo application for https://github.com/musonza/chat/
 4. Create database and modify .env
 5. `php artisan migrate`
 6. `php artisan key:generate`
-7. `php artisan serve`
-8. Create 2 user accounts in different browsers and start chatting
+7. `npm install && npm run dev`
+8. `php artisan serve`
+9. Create 2 user accounts in different browsers and start chatting
