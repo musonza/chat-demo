@@ -56469,7 +56469,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return window.conversations.indexOf(id) !== -1;
         },
         leaveConversation: function leaveConversation(id) {
-            axios.delete("/conversations/" + id + "/participants").then(function (response) {
+            var participationId = void 0;
+            var convo = this.conversations.find(function (c) {
+                return c.id === id;
+            });
+            participationId = convo.participants.data.find(function (p) {
+                return p.id === 1;
+            }).participation[0]['id'];
+
+            axios.delete("/chat/conversations/" + id + "/participants/" + participationId).then(function () {
                 window.location.href = "home?conversation_id=" + id;
             });
         },

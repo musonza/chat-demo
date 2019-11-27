@@ -68,7 +68,11 @@
             },
 
             leaveConversation(id) {
-                axios.delete(`/conversations/${id}/participants`).then(response => {
+                let participationId;
+                const convo = this.conversations.find(c => c.id === id);
+                participationId = (convo.participants.data.find(p => p.id === 1)).participation[0]['id'];
+                
+                axios.delete(`/chat/conversations/${id}/participants/${participationId}`).then(() => {
                     window.location.href = "home?conversation_id=" + id;
                 });
             },
