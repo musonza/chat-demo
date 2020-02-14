@@ -13,3 +13,9 @@ This is a simple demo application for https://github.com/musonza/chat/
 7. `npm install && npm run dev`
 8. `php artisan serve`
 9. Create 2 user accounts in different browsers and start chatting
+
+To use Pusher
+
+You need to comment this out https://github.com/musonza/chat-demo/blob/5985fea7b19a4c5f20f86fbc8502798e9ae9508a/resources/js/components/ChatForm.vue#L55
+Remove this comment
+https://github.com/musonza/chat-demo/blob/5985fea7b19a4c5f20f86fbc8502798e9ae9508a/resources/js/components/ChatMessages.vue#L60
