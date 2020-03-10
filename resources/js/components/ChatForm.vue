@@ -12,7 +12,7 @@
             >
             &nbsp;&nbsp;
             <span class="input-group-btn">
-        <button class="btn btn-primary btn-sm" id="btn-chat" @click="sendMessage">Send</button>
+        <button class="btn btn-primary" id="btn-chat" @click="sendMessage">Send</button>
       </span>
         </div>
         <div v-else>

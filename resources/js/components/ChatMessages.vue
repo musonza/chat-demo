@@ -1,12 +1,17 @@
 <template>
   <div>
     <button class="btn btn-danger btn-sm float-right" @click="deleteMessages()">Delete Messages</button>
-    <br>
-    <br>
+    <br />
+    <br />
     <ul class="chat">
-      <li class="left clearfix" v-for="(message, index) in messages.data" :key="index">
+      <li
+        :class="[currentUser.id == message.sender.id ? 'right' : 'left']"
+        class="clearfix"
+        v-for="(message, index) in messages.data"
+        :key="index"
+      >
         <div class="chat-body clearfix">
-          <div class="header">
+          <div v-if="currentUser.id != message.sender.id" class="header">
             <strong class="primary-font">{{ message.sender.name }}</strong>
           </div>
           <p>{{ message.body }}</p>
@@ -23,11 +28,17 @@ export default {
   data: () => ({
     messages: []
   }),
-
+  computed: {
+    currentUser() {
+      return window.participant;
+    }
+  },
   methods: {
     fetchMessages() {
       axios
-        .get(`/chat/conversations/${this.conversation}/messages?participant_id=${window.participant.id}&participant_type=${window.participant.type}`)
+        .get(
+          `/chat/conversations/${this.conversation}/messages?participant_id=${window.participant.id}&participant_type=${window.participant.type}`
+        )
         .then(response => {
           this.messages = response.data;
         });
@@ -35,7 +46,9 @@ export default {
 
     deleteMessages() {
       axios
-        .delete(`/chat/conversations/${this.conversation}/messages?participant_id=${window.participant.id}&participant_type=${window.participant.type}`)
+        .delete(
+          `/chat/conversations/${this.conversation}/messages?participant_id=${window.participant.id}&participant_type=${window.participant.type}`
+        )
         .then(response => {
           this.messages = response.data;
         });
@@ -61,3 +74,34 @@ export default {
   }
 };
 </script>
+<style lang="scss" scoped>
+ul.chat {
+  list-style: none;
+  padding: 0;
+  li {
+    .chat-body {
+      border-radius: 0.6rem;
+      width: fit-content;
+      padding: 4px 10px;
+      .header {
+        font-size: .85rem;
+      }
+      p {
+        margin: 0;
+      }
+    }
+    &.left {
+      .chat-body {
+        float: left;
+        background: rgb(158, 211, 221);
+      }
+    }
+    &.right {
+      .chat-body {
+        float: right;
+        background: rgb(170, 167, 167);
+      }
+    }
+  }
+}
+</style>
