@@ -6,7 +6,7 @@
     <ul class="chat">
       <li
         :class="[currentUser.id == message.sender.id ? 'right' : 'left']"
-        class="clearfix"
+        class="clearfix mb-1"
         v-for="(message, index) in messages.data"
         :key="index"
       >
@@ -93,7 +93,7 @@ ul.chat {
     &.left {
       .chat-body {
         float: left;
-        background: rgb(158, 211, 221);
+        background: rgb(177, 225, 235);
       }
     }
     &.right {
