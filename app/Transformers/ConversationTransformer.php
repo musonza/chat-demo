@@ -7,7 +7,7 @@ use Musonza\Chat\Transformers\Transformer;
 
 class ConversationTransformer extends Transformer
 {
-    protected $defaultIncludes = ['participants'];
+    protected array $defaultIncludes = ['participants'];
 
     public function transform($conversation)
     {
