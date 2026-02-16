@@ -12,7 +12,7 @@
         "laravel/reverb": "^1.6",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.10.1",
-        "musonza/chat": "@dev",
+        "musonza/chat": "^6.10",
         "spatie/laravel-fractal": "^6.3",
         "tightenco/ziggy": "^2.0"
     },
@@ -89,11 +89,5 @@
         }
     },
     "minimum-stability": "stable",
-    "prefer-stable": true,
-    "repositories": {
-        "chat": {
-            "type": "path",
-            "url": "/Users/tinashemusonza/Development/chat"
-        }
-    }
+    "prefer-stable": true
 }
