@@ -21,6 +21,12 @@ A simple demo application showcasing the [musonza/chat](https://github.com/muson
 ![Bot Chat](./screenshots/bot-chat.png)
 -->
 
+## 🚀 Live Demo
+
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/your-template-id)
+
+> **Try it live**: [chat-demo.up.railway.app](https://chat-demo.up.railway.app) *(coming soon)*
+
 ## Requirements
 
 -   PHP >= 8.2
@@ -181,6 +187,76 @@ This is a demo application. If you'd like to contribute to the underlying chat p
 ## License
 
 This demo application is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Deploy to Railway
+
+### One-Click Deploy
+
+Click the button above or follow these steps:
+
+### Manual Deployment
+
+1. **Create a Railway account** at [railway.app](https://railway.app)
+
+2. **Create a new project** and add a PostgreSQL database
+
+3. **Deploy from GitHub**
+   - Connect your GitHub account
+   - Select this repository
+   - Railway will auto-detect the Laravel app
+
+4. **Set environment variables** in Railway dashboard:
+
+   ```env
+   APP_NAME="Chat Demo"
+   APP_ENV=production
+   APP_DEBUG=false
+   APP_URL=https://your-app.up.railway.app
+   
+   # Database (auto-filled if using Railway PostgreSQL)
+   DB_CONNECTION=pgsql
+   DB_HOST=${{Postgres.PGHOST}}
+   DB_PORT=${{Postgres.PGPORT}}
+   DB_DATABASE=${{Postgres.PGDATABASE}}
+   DB_USERNAME=${{Postgres.PGUSER}}
+   DB_PASSWORD=${{Postgres.PGPASSWORD}}
+   
+   # Generate with: php artisan key:generate --show
+   APP_KEY=base64:your-generated-key
+   
+   # For real-time (Option A: Pusher - recommended for demo)
+   BROADCAST_CONNECTION=pusher
+   PUSHER_APP_ID=your-pusher-app-id
+   PUSHER_APP_KEY=your-pusher-key
+   PUSHER_APP_SECRET=your-pusher-secret
+   PUSHER_APP_CLUSTER=us2
+   
+   VITE_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
+   VITE_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
+   ```
+
+5. **For real-time WebSockets**, choose one option:
+
+   **Option A: Pusher (Easiest)**
+   - Sign up at [pusher.com](https://pusher.com) (free tier: 200k messages/day)
+   - Create a Channels app and copy credentials
+   - Update `.env` as shown above
+   
+   **Option B: Soketi on Railway**
+   - Add Soketi as a separate Railway service
+   - Configure it as a Pusher-compatible server
+   
+   **Option C: Run without real-time**
+   - Set `BROADCAST_CONNECTION=log`
+   - Messages will save but won't appear instantly (refresh to see new messages)
+
+### Railway Template
+
+To create a one-click deploy template:
+
+1. Deploy the app manually first
+2. Go to Railway dashboard → Project Settings → Generate Template
+3. Replace the button URL in this README
 
 ## Related Projects
 
