@@ -6,6 +6,7 @@ import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
+import { onMounted } from 'vue';
 
 defineProps({
     canResetPassword: {
@@ -22,6 +23,21 @@ const form = useForm({
     remember: false,
 });
 
+// Pre-fill from URL params
+onMounted(() => {
+    const params = new URLSearchParams(window.location.search);
+    const email = params.get('email');
+    if (email) {
+        form.email = email;
+        form.password = 'password';
+    }
+});
+
+const loginAs = (email) => {
+    form.email = email;
+    form.password = 'password';
+};
+
 const submit = () => {
     form.post(route('login'), {
         onFinish: () => form.reset('password'),
@@ -35,6 +51,33 @@ const submit = () => {
 
         <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
             {{ status }}
+        </div>
+
+        <div class="mb-6 p-4 bg-indigo-50 rounded-lg">
+            <p class="text-sm text-indigo-700 font-medium mb-3">🚀 Quick Demo Login</p>
+            <div class="flex flex-wrap gap-2">
+                <button
+                    type="button"
+                    @click="loginAs('alice@example.com')"
+                    class="px-3 py-1.5 bg-indigo-100 hover:bg-indigo-200 text-indigo-700 rounded text-sm font-medium transition-colors"
+                >
+                    Alice
+                </button>
+                <button
+                    type="button"
+                    @click="loginAs('bob@example.com')"
+                    class="px-3 py-1.5 bg-indigo-100 hover:bg-indigo-200 text-indigo-700 rounded text-sm font-medium transition-colors"
+                >
+                    Bob
+                </button>
+                <button
+                    type="button"
+                    @click="loginAs('charlie@example.com')"
+                    class="px-3 py-1.5 bg-indigo-100 hover:bg-indigo-200 text-indigo-700 rounded text-sm font-medium transition-colors"
+                >
+                    Charlie
+                </button>
+            </div>
         </div>
 
         <form @submit.prevent="submit">

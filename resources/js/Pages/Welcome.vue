@@ -113,9 +113,29 @@ defineProps({
                     </template>
                 </div>
 
-                <div class="mt-12 text-white/60 text-sm">
-                    <p>Demo Users: alice@example.com, bob@example.com, charlie@example.com</p>
-                    <p>Password: password</p>
+                <div class="mt-12 bg-white/10 backdrop-blur-sm rounded-xl p-6 max-w-md mx-auto">
+                    <p class="text-white font-medium mb-4">🚀 Quick Demo Login</p>
+                    <div class="flex flex-wrap justify-center gap-3">
+                        <a
+                            :href="route('login') + '?email=alice@example.com'"
+                            class="px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-lg text-sm font-medium transition-colors"
+                        >
+                            Alice
+                        </a>
+                        <a
+                            :href="route('login') + '?email=bob@example.com'"
+                            class="px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-lg text-sm font-medium transition-colors"
+                        >
+                            Bob
+                        </a>
+                        <a
+                            :href="route('login') + '?email=charlie@example.com'"
+                            class="px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-lg text-sm font-medium transition-colors"
+                        >
+                            Charlie
+                        </a>
+                    </div>
+                    <p class="text-white/70 text-xs mt-3">Password: <code class="bg-white/20 px-1.5 py-0.5 rounded">password</code></p>
                 </div>
             </div>
         </main>
