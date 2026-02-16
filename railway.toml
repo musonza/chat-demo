@@ -1,0 +1,10 @@
+[build]
+builder = "nixpacks"
+
+[deploy]
+startCommand = "php artisan migrate --force && php artisan config:cache && php artisan route:cache && php artisan view:cache && php-fpm"
+healthcheckPath = "/up"
+healthcheckTimeout = 300
+
+[build.env]
+NIXPACKS_PHP_VERSION = "8.2"
