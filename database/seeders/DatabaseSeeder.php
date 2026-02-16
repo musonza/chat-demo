@@ -12,55 +12,63 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        // Create demo users
-        $alice = User::factory()->create([
-            'name' => 'Alice Johnson',
-            'email' => 'alice@example.com',
-            'password' => bcrypt('password'),
-        ]);
+        // Create demo users (idempotent - won't duplicate on restart)
+        $alice = User::firstOrCreate(
+            ['email' => 'alice@example.com'],
+            ['name' => 'Alice Johnson', 'password' => bcrypt('password')]
+        );
 
-        $bob = User::factory()->create([
-            'name' => 'Bob Smith',
-            'email' => 'bob@example.com',
-            'password' => bcrypt('password'),
-        ]);
+        $bob = User::firstOrCreate(
+            ['email' => 'bob@example.com'],
+            ['name' => 'Bob Smith', 'password' => bcrypt('password')]
+        );
 
-        $charlie = User::factory()->create([
-            'name' => 'Charlie Brown',
-            'email' => 'charlie@example.com',
-            'password' => bcrypt('password'),
-        ]);
+        $charlie = User::firstOrCreate(
+            ['email' => 'charlie@example.com'],
+            ['name' => 'Charlie Brown', 'password' => bcrypt('password')]
+        );
 
-        $diana = User::factory()->create([
-            'name' => 'Diana Ross',
-            'email' => 'diana@example.com',
-            'password' => bcrypt('password'),
-        ]);
+        $diana = User::firstOrCreate(
+            ['email' => 'diana@example.com'],
+            ['name' => 'Diana Ross', 'password' => bcrypt('password')]
+        );
 
-        // Create demo bots
-        $supportBot = Bot::create([
-            'name' => 'Support Bot',
-            'type' => 'support',
-            'description' => 'I can help answer your questions about the chat system.',
-            'capabilities' => ['auto_reply', 'support'],
-            'is_active' => true,
-        ]);
+        // Create demo bots (idempotent)
+        $supportBot = Bot::firstOrCreate(
+            ['name' => 'Support Bot'],
+            [
+                'type' => 'support',
+                'description' => 'I can help answer your questions about the chat system.',
+                'capabilities' => ['auto_reply', 'support'],
+                'is_active' => true,
+            ]
+        );
 
-        $welcomeBot = Bot::create([
-            'name' => 'Welcome Bot',
-            'type' => 'greeter',
-            'description' => 'I welcome new users and help them get started.',
-            'capabilities' => ['welcome_message'],
-            'is_active' => true,
-        ]);
+        $welcomeBot = Bot::firstOrCreate(
+            ['name' => 'Welcome Bot'],
+            [
+                'type' => 'greeter',
+                'description' => 'I welcome new users and help them get started.',
+                'capabilities' => ['welcome_message'],
+                'is_active' => true,
+            ]
+        );
 
-        $notificationBot = Bot::create([
-            'name' => 'Notification Bot',
-            'type' => 'notification',
-            'description' => 'I send important system notifications.',
-            'capabilities' => ['notifications'],
-            'is_active' => true,
-        ]);
+        $notificationBot = Bot::firstOrCreate(
+            ['name' => 'Notification Bot'],
+            [
+                'type' => 'notification',
+                'description' => 'I send important system notifications.',
+                'capabilities' => ['notifications'],
+                'is_active' => true,
+            ]
+        );
+
+        // Skip conversation seeding if already done (check if Alice has any conversations)
+        if ($alice->conversations()->count() > 0) {
+            $this->command->info('Demo data already exists, skipping conversation seeding.');
+            return;
+        }
 
         // Create a direct message conversation between Alice and Bob
         $dmConversation = Chat::makeDirect()->createConversation([$alice, $bob]);
