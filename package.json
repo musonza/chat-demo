@@ -23,7 +23,7 @@
     "dependencies": {
         "@tailwindcss/postcss": "^4.1.18",
         "laravel-echo": "^1.19.0",
-        "lodash-es": "^4.17.22",
+        "lodash-es": "^4.18.1",
         "pusher-js": "^8.4.0"
     }
 }
